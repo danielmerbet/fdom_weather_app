@@ -5,7 +5,7 @@ name: fdom and weather forecaster
 
 on:
   schedule:
-    - cron: '20 */1 * * *'
+    - cron: '25 */1 * * *'
 
 jobs:
   build:
@@ -25,16 +25,13 @@ jobs:
     - name: Test the python code
       run: |
         python app_ensemble_fdom.py
-    - name: commit files
+    - name: Commit and push files
       env:
-        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
       run: |
         git config --local user.email "damebet@gmail.com"
         git config --local user.name "danielmerbet"
         git add --all
         git commit -am "auto commit $(date)" || echo "No changes to commit"
-    - name: push changes
-      uses: ad-m/github-push-action@v0.6.0
-      with:
-          github_token: ${{ secrets.PAT_TOKEN }}
-          branch: main 
+        git remote set-url origin https://danielmerbet:${GITHUB_TOKEN}@github.com/danielmerbet/fdom_weather_app.git
+        git push origin main
