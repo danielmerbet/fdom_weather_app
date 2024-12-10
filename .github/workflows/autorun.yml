@@ -30,7 +30,7 @@ jobs:
         PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
       run: |
         git config --local user.email "damebet@gmail.com"
-        git config --local user.name "damebet"
+        git config --local user.name "danielmerbet"
         git add --all
         git commit -am "auto commit $(date)" || echo "No changes to commit"
         git push https://damebet:${PAT_TOKEN}@github.com/danielmerbet/fdom_weather_app.git main
