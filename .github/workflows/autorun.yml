@@ -1,11 +1,9 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
-
+# This workflow will install Python dependencies, run tests, and push changes to the repository
 name: fdom and weather forecaster
 
 on:
   schedule:
-    - cron: '1 */1 * * *'
+    - cron: '1 */1 * * *'  # Runs every hour at the first minute
 
 jobs:
   build:
@@ -27,11 +25,11 @@ jobs:
         python app_ensemble_fdom.py
     - name: Commit and push files
       env:
-        GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
       run: |
         git config --local user.email "damebet@gmail.com"
         git config --local user.name "danielmerbet"
         git add --all
-        git commit -am "auto commit $(date)" || echo "No changes to commit"
-        git remote set-url origin https://danielmerbet:${GITHUB_TOKEN}@github.com/danielmerbet/fdom_weather_app.git
+        git commit -m "auto commit $(date)" || echo "No changes to commit"
+        git remote set-url origin https://danielmerbet:${PAT_TOKEN}@github.com/danielmerbet/fdom_weather_app.git
         git push origin main
