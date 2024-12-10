@@ -5,7 +5,7 @@ name: fdom and weather forecaster
 
 on:
   schedule:
-    - cron: '15 */2 * * *'
+    - cron: '59 */2 * * *'
 
 jobs:
   build:
