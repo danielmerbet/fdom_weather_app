@@ -24,7 +24,7 @@ jobs:
           pip install -r requirements.txt
           
       - name: execute py script # run main.py
-        run: python main.py
+        run: python app_ensemble_fdom.py
           
       - name: commit files
         run: |
