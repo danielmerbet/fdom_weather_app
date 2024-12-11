@@ -202,7 +202,9 @@ def plot_data(df, predictions):
             axs[1].plot(df.index, df[col_name], lw=0.5, alpha=0.7, color="black")
     axs[1].axvline(now, color="gray", linestyle="solid", lw=0.5)
     axs[1].set_ylabel("Temperature (°C)", fontsize=label_sizes, labelpad=0)
-    axs[1].tick_params(axis='x', labelbottom=False, color="gray", width=0.3)
+    axs[1].tick_params(axis='x', labelbottom=True,labelsize=label_sizes, color="gray", width=0.3)
+    axs[1].xaxis.set_major_formatter(FuncFormatter(custom_date_formatter))
+    axs[1].xaxis.set_major_locator(mdates.HourLocator(byhour=[0, 12]))  # Major ticks at 00:00 and 12:00
     format_y_axis(axs[1], step=5)
     axs[1].grid(axis='y', linewidth=0.2, color='gray')
 
@@ -213,7 +215,9 @@ def plot_data(df, predictions):
             axs[2].plot(df.index, df[col_name], lw=0.5, alpha=0.7, color="blue")
     axs[2].axvline(now, color="gray", linestyle="solid", lw=0.5)
     axs[2].set_ylabel("Precipitation (mm)", fontsize=label_sizes, labelpad=0)
-    axs[2].tick_params(axis='x', labelbottom=False, color="gray", width=0.3)
+    axs[2].tick_params(axis='x', labelbottom=True,labelsize=label_sizes, color="gray", width=0.3)
+    axs[2].xaxis.set_major_formatter(FuncFormatter(custom_date_formatter))
+    axs[2].xaxis.set_major_locator(mdates.HourLocator(byhour=[0, 12]))  # Major ticks at 00:00 and 12:00
     format_y_axis(axs[2], step=5)
     axs[2].grid(axis='y', linewidth=0.2, color='gray')
 
@@ -224,7 +228,9 @@ def plot_data(df, predictions):
             axs[3].plot(df.index, df[col_name], lw=0.5, alpha=0.7, color="purple")
     axs[3].axvline(now, color="gray", linestyle="solid", lw=0.5)
     axs[3].set_ylabel("Humidity (%)", fontsize=label_sizes, labelpad=0)
-    axs[3].tick_params(axis='x', labelbottom=False, color="gray", width=0.3)
+    axs[3].tick_params(axis='x', labelbottom=True,labelsize=label_sizes, color="gray", width=0.3)
+    axs[3].xaxis.set_major_formatter(FuncFormatter(custom_date_formatter))
+    axs[3].xaxis.set_major_locator(mdates.HourLocator(byhour=[0, 12]))  # Major ticks at 00:00 and 12:00
     format_y_axis(axs[3], step=20)
     axs[3].grid(axis='y', linewidth=0.2, color='gray')
 
@@ -248,6 +254,7 @@ def plot_data(df, predictions):
 
     # Save the plot
     plt.savefig("static/plot.png", dpi=300)
+    plt.savefig("static/plot.pdf")
     plt.close()
     
 # Fetch and plot data, called every hour by the scheduler
