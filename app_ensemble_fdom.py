@@ -12,6 +12,9 @@ import os
 from matplotlib.ticker import MultipleLocator
 from matplotlib.ticker import FuncFormatter
 from joblib import load
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+import numpy as np
 
 #app = Flask(__name__)
 #scheduler = BackgroundScheduler()
@@ -256,13 +259,176 @@ def plot_data(df, predictions):
     plt.savefig("static/plot.png", dpi=300)
     plt.savefig("static/plot.pdf")
     plt.close()
+
+def save_plot_as_html(df, predictions, members):
+    now = datetime.now()  # Current time
+
+    # Create a subplot figure with 5 rows and 1 column
+    fig = make_subplots(
+        rows=5,
+        cols=1,
+        shared_xaxes=False,
+        vertical_spacing=0.05,
+        subplot_titles=(
+            "fDOM (QSU)", 
+            "Temperature (°C)", 
+            "Precipitation (mm)", 
+            "Humidity (%)", 
+            "Wind Speed (km/h)"
+        )
+    )
+
+    # Plot 1: Predictions
+    unique_dates = df.index.normalize().unique()
+    # Get the last day in the current dates and add one day to it (to cheat the plot and make it coincide)
+    next_day = unique_dates[-1] + pd.Timedelta(days=1)
+    new_unique_dates = unique_dates.append(pd.to_datetime([next_day]))
+    # add fake data to also ceaht the plot
+    predictions.loc[len(predictions)] = np.nan
+    for col in predictions.columns:  # Loop through each column in the predictions DataFrame
+        fig.add_trace(
+            go.Scatter(
+                x=new_unique_dates,
+                y=predictions[col],
+                mode='lines+markers',
+                line=dict(color="red",width=0.5),  # Customize line width
+                opacity=0.7,
+                name=f'fDOM {col}'  # Label the line with the column name
+            ),
+            row=1,
+            col=1
+        )
+    # Add vertical line for "now"
+    fig.add_vline(x=now, line_width=1, line_dash="solid", line_color="gray", row=1, col=1)
+
+    # Plot 2: Temperature Ensemble Members
+    for member in range(members):
+        col_name = f"temperature_2m_member{member}"
+        if col_name in df.columns:
+            fig.add_trace(
+                go.Scatter(
+                    x=df.index,
+                    y=df[col_name],
+                    mode='lines',
+                    line=dict(color='black', width=0.5),
+                    opacity=0.7,
+                    name=f'Temperature Member {member}'
+                ),
+                row=2,
+                col=1
+            )
+    fig.add_vline(x=now, line_width=1, line_dash="solid", line_color="gray", row=2, col=1)
     
+    # Plot 3: Precipitation Ensemble Members
+    for member in range(members):
+        col_name = f"precipitation_member{member}"
+        if col_name in df.columns:
+            fig.add_trace(
+                go.Scatter(
+                    x=df.index,
+                    y=df[col_name],
+                    mode='lines',
+                    line=dict(color='blue', width=0.5),
+                    opacity=0.7,
+                    name=f'Precipitation Member {member}'
+                ),
+                row=3,
+                col=1
+            )
+    fig.add_vline(x=now, line_width=1, line_dash="solid", line_color="gray", row=3, col=1)
+    
+    # Plot 4: Humidity Ensemble Members
+    for member in range(members):
+        col_name = f"relative_humidity_2m_member{member}"
+        if col_name in df.columns:
+            fig.add_trace(
+                go.Scatter(
+                    x=df.index,
+                    y=df[col_name],
+                    mode='lines',
+                    line=dict(color='purple', width=0.5),
+                    opacity=0.7,
+                    name=f'Humidity Member {member}'
+                ),
+                row=4,
+                col=1
+            )
+    fig.add_vline(x=now, line_width=1, line_dash="solid", line_color="gray", row=4, col=1)
+    
+    # Plot 5: Wind Speed Ensemble Members
+    for member in range(members):
+        col_name = f"wind_speed_10m_member{member}"
+        if col_name in df.columns:
+            fig.add_trace(
+                go.Scatter(
+                    x=df.index,
+                    y=df[col_name],
+                    mode='lines',
+                    line=dict(color='green', width=0.5),
+                    opacity=0.7,
+                    name=f'Wind Speed Member {member}'
+                ),
+                row=5,
+                col=1
+            )
+    fig.add_vline(x=now, line_width=1, line_dash="solid", line_color="gray", row=5, col=1)
+    
+    # Customize x-axis for subplot 1
+        
+    fig.update_xaxes(
+            #title_text="Time (UTC +1)",
+            row=1,
+            col=1,
+            tickformat="%d %b",  # Format as '5 Dec\n12:00'
+            tickmode="auto",
+            ticks="inside",
+            #showline=True,
+            #showgrid=True,
+            #gridwidth=0.5,
+            #gridcolor="gray",
+        )
+    
+    # Customize x-axis for all subplots
+    unique_dates = df.index.normalize().unique()
+    tickvals = []
+    ticktext = []
+
+    # Add tick values for 00:00 and 12:00
+    for date in unique_dates:
+        midnight = datetime.combine(date, datetime.min.time())  # 00:00
+        noon = midnight + pd.Timedelta("12:00:00")  # 12:00
+        tickvals.extend([midnight, noon])
+        ticktext.extend([date.strftime("%-d %b"), "12:00"])
+
+    for i in range(2, 6):
+        fig.update_xaxes(
+            tickmode="array",
+            #ticks="inside",
+            tickvals=tickvals,
+            ticktext=ticktext,
+            row=i,
+            col=1
+        )
+    
+    # Update layout
+    fig.update_layout(
+        title=f"Weather forecast ensemble based on {model} with {members} members",
+        #xaxis_title="Time (UTC +1)",
+        height=1200,  # Adjust figure height
+        showlegend=False,  # Remove global legend to avoid clutter
+        template="plotly_white"
+    )
+
+    # Save to HTML
+    fig.write_html("static/plot.html")
+
 # Fetch and plot data, called every hour by the scheduler
 def fetch_and_plot():
     df = fetch_data()
     df_soil = fetch_data_soil()
     df_soil_all = arrange_predictions(df_soil)
     plot_data(df, df_soil_all)
+    save_plot_as_html(df, df_soil_all, members)
 
 # Run the initial fetch and plot
 fetch_and_plot()
