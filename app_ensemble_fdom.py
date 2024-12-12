@@ -281,14 +281,15 @@ def save_plot_as_html(df, predictions, members):
     # Plot 1: Predictions
     unique_dates = df.index.normalize().unique()
     # Get the last day in the current dates and add one day to it (to cheat the plot and make it coincide)
-    next_day = unique_dates[-1] + pd.Timedelta(days=1)
-    new_unique_dates = unique_dates.append(pd.to_datetime([next_day]))
+    #next_day = unique_dates[-1] + pd.Timedelta(days=1)
+    #new_unique_dates = unique_dates.append(pd.to_datetime([next_day]))
     # add fake data to also ceaht the plot
-    predictions.loc[len(predictions)] = np.nan
+    #predictions.loc[len(predictions)] = np.nan
     for col in predictions.columns:  # Loop through each column in the predictions DataFrame
         fig.add_trace(
             go.Scatter(
-                x=new_unique_dates,
+                #x=new_unique_dates,
+                x=unique_dates,
                 y=predictions[col],
                 mode='lines+markers',
                 line=dict(color="red",width=0.5),  # Customize line width
