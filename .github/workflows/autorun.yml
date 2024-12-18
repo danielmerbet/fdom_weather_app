@@ -3,7 +3,7 @@ name: fdom and weather forecaster
 
 on:
   schedule:
-    - cron: '58 */1 * * *'  # Runs every hour at the first minute
+    - cron: '58 */3 * * *'  # Runs every hour at the first minute
 
 jobs:
   build:
