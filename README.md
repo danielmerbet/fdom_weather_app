@@ -1,6 +1,6 @@
 # fDOM Weather App
 
-This repository contains the **fDOM Weather App**, an online tool designed to provide surface (0-5m) fluorescence Dissolved Organic Matter (fDOM) forecasts on a lake based on meteorological and soil data. The application integrates weather forecast data from the Global Forecast System (GFS) with machine learning models to deliver 7-day fDOM predictions. The tool is updated every 3 hours.
+This repository contains the **fDOM Weather App**, an online tool designed to provide fluorescence Dissolved Organic Matter (fDOM) forecasts based on meteorological and soil data. The application integrates weather forecast data from the Global Forecast System (GFS) with machine learning models to deliver 7-day fDOM predictions. The tool is updated every 3 hours to ensure the most up-to-date information is used.
 
 ## Features
 
@@ -41,6 +41,12 @@ This is the main script that powers the fDOM Weather App. Below is an overview o
 
 This is the **first version** of the fDOM Weather App. While it provides valuable insights, a **full analysis of uncertainties** in the predictions is still required to enhance its reliability and accuracy.
 
+## Funding Acknowledgment
+
+This tool has received funding from [intoDBP](https://intodbp.eu/). IntoDBP is an EU-funded project that will develop, test, scale-up, validate, and benchmark innovative tools and strategies to protect catchments and minimize human exposure to disinfection by-products (DBP) under current and future climates, without compromising disinfection efficacy, and which could be applied at the global scale. The project will develop its cross-cutting solutions on 4 complementary case studies (CS) combining rural and dense urban areas, from 3 European countries where disinfection by-products are a scientific, technological, and political challenge.
+![intoDBP](./images/intodbp.png)
+![intoDBP](./images/eu.png)
+
 ## Future Improvements
 
 - Comprehensive uncertainty analysis to refine prediction confidence.
@@ -75,15 +81,7 @@ Contributions are welcome! If you have suggestions for improving the app or addr
 
 ## License
 
-This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) License. 
-
-You are free to share and adapt the work under the following terms:
-- **Attribution**: You must give appropriate credit, provide a link to the license, and indicate if changes were made.
-- **NonCommercial**: You may not use the material for commercial purposes.
-
-For more details, see the [LICENSE](LICENSE) file or visit the [Creative Commons License page](https://creativecommons.org/licenses/by-nc/4.0/).
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
-
-For any questions or feedback, please contact [Daniel Mercado Bettin](https://github.com/danielmerbet).
 
