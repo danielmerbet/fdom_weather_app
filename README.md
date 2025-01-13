@@ -27,7 +27,7 @@ Explore the interactive visualization [here](https://danielmerbet.github.io/fdom
 
 ## How It Works
 
-1. **Data Retrieval**: The application fetches weather and soil data from the GFS for 31 ensemble members.
+1. **Data Retrieval**: The application fetches weather and soil data from the GFS for 31 ensemble members by using [Open Meteo](https://open-meteo.com/ "target=_blank").
 2. **Model Execution**: The retrieved data is passed through a Random Forest model trained to predict fDOM values.
 3. **Forecast Generation**: The model outputs fDOM predictions for the next 7 days.
 4. **Online Access**: Users can access the forecasts through the online tool. 
