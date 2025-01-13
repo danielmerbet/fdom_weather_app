@@ -413,7 +413,8 @@ def save_plot_as_html(df, predictions, members):
     
     # Update layout
     fig.update_layout(
-        title=f"Weather forecast ensemble based on {model} with {members} members",
+        title=f"7 days forecast of fDOM (Fluorescent Dissolved Organic Matter) as a proxy of DBPs (Disinfection by-products)",
+      #Weather forecast ensemble based on {model} with {members} members",
         #xaxis_title="Time (UTC +1)",
         height=1200,  # Adjust figure height
         showlegend=False,  # Remove global legend to avoid clutter
