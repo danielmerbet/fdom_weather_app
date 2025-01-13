@@ -21,6 +21,10 @@ One of the primary sources for drinking water for the city of Barcelona. This re
 
 It's a freshwater lake located in County Mayo, Ireland. Lough Feeagh is an important site for studying fDOM dynamics in temperate regions. Its geographical location is [53.9203°N, -9.5738°W](https://www.google.com/maps?q=53.9203,-9.5738 "target=_blank"). This case study will be added soon, expanding the tool's applicability and testing under diverse environmental conditions.
 
+### Visualization
+
+Explore the interactive visualization [here](https://danielmerbet.github.io/fdom_weather_app/static/plot.html).
+
 ## How It Works
 
 1. **Data Retrieval**: The application fetches weather and soil data from the GFS for 31 ensemble members.
