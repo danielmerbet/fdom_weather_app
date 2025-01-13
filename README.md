@@ -11,9 +11,15 @@ This repository contains the **fDOM Weather App**, an online tool designed to pr
 - **7-Day Forecasts**: Provides forecasts for the upcoming week based on the latest data.
 - **Frequent Updates**: The application updates its forecasts every 3 hours.
 
-## Case Study: Sau Reservoir
+## Case Studies
 
-The primary case study for this tool is the **Sau Reservoir**, one of the primary source of water for the city of Barcelona. This reservoir serves as a key site for testing and validating the fDOM Weather App. Its geographical location is [41.9721°N, 2.4030°E](https://www.google.com/maps?q=41.9721,2.4030), providing a unique setting for monitoring fluorescence Dissolved Organic Matter under varying meteorological conditions.
+### Sau Reservoir
+
+One of the primary sources for drinking water for the city of Barcelona. This reservoir serves as a key site for testing and validating the fDOM Weather App. Its geographical location is [41.9721°N, 2.4030°E](https://www.google.com/maps?q=41.9721,2.4030 "target=_blank"), providing a unique setting for monitoring fluorescence Dissolved Organic Matter under varying meteorological conditions.
+
+### Lough Feeagh
+
+It's a freshwater lake located in County Mayo, Ireland. Lough Feeagh is an important site for studying fDOM dynamics in temperate regions. Its geographical location is [53.9203°N, -9.5738°W](https://www.google.com/maps?q=53.9203,-9.5738 "target=_blank"). This case study will be added soon, expanding the tool's applicability and testing under diverse environmental conditions.
 
 ## How It Works
 
@@ -49,17 +55,18 @@ This is the **first version** of the fDOM Weather App. While it provides valuabl
 
 ## Funding Acknowledgment
 
-This tool has received funding from [intoDBP](https://intodbp.eu/). IntoDBP is an EU-funded project that will develop, test, scale-up, validate, and benchmark innovative tools and strategies to protect catchments and minimize human exposure to disinfection by-products (DBP) under current and future climates, without compromising disinfection efficacy, and which could be applied at the global scale. The project will develop its cross-cutting solutions on 4 complementary case studies (CS) combining rural and dense urban areas, from 3 European countries where disinfection by-products are a scientific, technological, and political challenge.
+This tool has received funding from [intoDBP](https://intodbp.eu/ "target=_blank"). IntoDBP is an EU-funded project that will develop, test, scale-up, validate, and benchmark innovative tools and strategies to protect catchments and minimize human exposure to disinfection by-products (DBP) under current and future climates, without compromising disinfection efficacy, and which could be applied at the global scale. The project will develop its cross-cutting solutions on 4 complementary case studies (CS) combining rural and dense urban areas, from 3 European countries where disinfection by-products are a scientific, technological, and political challenge.
 
 ![intoDBP](./images/intodbp.png)
 ![eu](./images/eu.png)
 
 ## Future Improvements
 
+- Add more case studies.
 - Comprehensive uncertainty analysis to refine prediction confidence.
-- Integration of additional weather models for ensemble forecasting.
-- Enhanced visualization tools for a more user-friendly interface.
 - Support for other environmental variables beyond fDOM.
+- Enhanced visualization tools for a more user-friendly interface.
+
 
 ## Getting Started
 
@@ -88,7 +95,13 @@ Contributions are welcome! If you have suggestions for improving the app or addr
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) License. 
+
+You are free to share and adapt the work under the following terms:
+- **Attribution**: You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+- **NonCommercial**: You may not use the material for commercial purposes.
+
+For more details, see the [LICENSE](LICENSE) file or visit the [Creative Commons License page](https://creativecommons.org/licenses/by-nc/4.0/).
 
 ---
 
