@@ -2,6 +2,8 @@
 
 This repository contains the **fDOM Weather App**, an online tool designed to provide fluorescence Dissolved Organic Matter (fDOM) forecasts based on meteorological and soil data. The application integrates weather forecast data from the Global Forecast System (GFS) with machine learning models to deliver 7-day fDOM predictions. The tool is updated every 3 hours to ensure the most up-to-date information is used.
 
+![example](./images/example.png)
+
 ## Features
 
 - **Real-time Weather Data**: Connects to the GFS to download meteorological and soil data for 31 ensemble members.
@@ -44,8 +46,9 @@ This is the **first version** of the fDOM Weather App. While it provides valuabl
 ## Funding Acknowledgment
 
 This tool has received funding from [intoDBP](https://intodbp.eu/). IntoDBP is an EU-funded project that will develop, test, scale-up, validate, and benchmark innovative tools and strategies to protect catchments and minimize human exposure to disinfection by-products (DBP) under current and future climates, without compromising disinfection efficacy, and which could be applied at the global scale. The project will develop its cross-cutting solutions on 4 complementary case studies (CS) combining rural and dense urban areas, from 3 European countries where disinfection by-products are a scientific, technological, and political challenge.
+
 ![intoDBP](./images/intodbp.png)
-![intoDBP](./images/eu.png)
+![eu](./images/eu.png)
 
 ## Future Improvements
 
