@@ -1,6 +1,6 @@
 # fDOM Weather App
 
-This repository contains the **fDOM Weather App**, an online tool designed to provide fluorescence Dissolved Organic Matter (fDOM) forecasts based on meteorological and soil data. The application integrates weather forecast data from the Global Forecast System (GFS) with machine learning models to deliver 7-day fDOM predictions. The tool is updated every 3 hours to ensure the most up-to-date information is used.
+This repository contains the **fDOM Weather App**, an online tool designed to provide fluorescence Dissolved Organic Matter (fDOM) forecasts based on meteorological and soil data on lakes. The application integrates weather forecast data from the Global Forecast System (GFS) with machine learning models to deliver 7-day fDOM predictions. The tool is updated every 3 hours to ensure the most up-to-date information is used.
 
 ![example](./images/example.png)
 
@@ -11,12 +11,16 @@ This repository contains the **fDOM Weather App**, an online tool designed to pr
 - **7-Day Forecasts**: Provides forecasts for the upcoming week based on the latest data.
 - **Frequent Updates**: The application updates its forecasts every 3 hours.
 
+## Case Study: Sau Reservoir
+
+The primary case study for this tool is the **Sau Reservoir**, one of the primary source of water for the city of Barcelona. This reservoir serves as a key site for testing and validating the fDOM Weather App. Its geographical location is [41.9721°N, 2.4030°E](https://www.google.com/maps?q=41.9721,2.4030), providing a unique setting for monitoring fluorescence Dissolved Organic Matter under varying meteorological conditions.
+
 ## How It Works
 
 1. **Data Retrieval**: The application fetches weather and soil data from the GFS for 31 ensemble members.
 2. **Model Execution**: The retrieved data is passed through a Random Forest model trained to predict fDOM values.
 3. **Forecast Generation**: The model outputs fDOM predictions for the next 7 days.
-4. **Online Access**: Users can access the forecasts through the online tool.
+4. **Online Access**: Users can access the forecasts through the online tool. 
 
 ## Code Overview
 
