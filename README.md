@@ -67,6 +67,7 @@ This tool has received funding from [intoDBP](https://intodbp.eu/ "target=_blank
 ## Future Improvements
 
 - Add more case studies.
+- Improve weather data by using [GEFS model from AWS](https://github.com/awslabs/open-data-docs/tree/main/docs/noaa/noaa-gefs-pds)
 - Comprehensive uncertainty analysis to refine prediction confidence.
 - Support for other environmental variables beyond fDOM.
 - Enhanced visualization tools for a more user-friendly interface.
