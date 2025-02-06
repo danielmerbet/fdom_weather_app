@@ -187,7 +187,7 @@ def plot_data(df, predictions):
 
     # Plot 1: Predictions
     unique_dates = df.index.normalize().unique()
-    axs[0].plot(unique_dates, predictions, lw=0.5, color="red")
+    axs[0].plot(unique_dates, predictions, lw=0.5, color="green")
     axs[0].axvline(now, color="gray", linestyle="solid", lw=0.5)
     axs[0].set_ylabel("fDOM (QSU)", fontsize=label_sizes, labelpad=0)
     #axs[0].tick_params(axis='x', labelbottom=True, color="gray", width=0.3)
@@ -241,7 +241,7 @@ def plot_data(df, predictions):
     for member in range(members):
         col_name = f"wind_speed_10m_member{member}"
         if col_name in df.columns:
-            axs[4].plot(df.index, df[col_name], lw=0.5, alpha=0.7, color="green")
+            axs[4].plot(df.index, df[col_name], lw=0.5, alpha=0.7, color="red")
     axs[4].axvline(now, color="gray", linestyle="solid", lw=0.5)
     axs[4].set_ylabel("Wind Speed (km/h)", fontsize=label_sizes, labelpad=0)
     axs[4].tick_params(axis='x', rotation=0, labelsize=label_sizes, color="gray", width=0.3)
